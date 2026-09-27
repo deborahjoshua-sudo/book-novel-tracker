@@ -34,12 +34,18 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: Setup Android SDK
+            - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses
 
       - name: Install Android SDK packages
         run: |
           sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+
+      
 
       - name: Build debug APK
         run: |
